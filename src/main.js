@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2023-25 Zendalona
  * This software is licensed under the GPL-3.0 License.
@@ -12,7 +11,7 @@ import { addDisclaimer } from "./layout/disclaimer.js";
 import { detailsCloseButton, distanceBox, distanceIcon, input } from "./utils/dom-elements.js";
 import { lockTabKey } from "./utils/keydown-helpers.js";
 import { closeSound, successSound } from "./utils/sounds.js";
-let marker
+let marker;
 addDisclaimer() // Add a disclaimer to the UI
 
 fetch('https://ipinfo.io/json') //fetching the location of the user and setting the map to that location, if failed then setting it to the default location
@@ -22,9 +21,9 @@ fetch('https://ipinfo.io/json') //fetching the location of the user and setting 
       map.setView([lat, lon], 7)
   })
   .catch(error => {
-map.setView([10.16,76.64],7)
+    map.setView([10.16,76.64],7)
   }).finally(()=>{
-    window.marker = new Marker(map.getCenter()).addTo(map)
+    marker = new Marker(map.getCenter()).addTo(map)
   })
 document.addEventListener('keydown',handleKeyDownOnDocument) // Initialize event listeners for key shortcuts on the document, general any time shortcuts
 addListenerstoUI() // Initialize event listeners for the UI elements on the page
