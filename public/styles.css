@@ -127,18 +127,37 @@ header button{
     height: calc(100vh - 22px);
 }
 #infoBox {
-  position: absolute; /* Position it in the corner */
+  position: absolute;
   bottom: 50px;
   left: 15px;
   color: white;
-  background-color: #6f0e0edb;
+  background-color: rgba(111, 14, 14, 0.95);
   border: 1px solid black;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
-  z-index: 1000; /* Ensure it's on top of the map */
+  z-index: 1000;
   display: none;
-  line-height: 22px;
+  line-height: 24px;
+  font-size: 14px;
+  max-width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+#infoBox span {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+#coordinates {
+  margin-top: 5px;
+  display: block;
+}
+
+#infoBox h3 {
+  margin: 10px 0 5px 0;
+  font-size: 16px;
+}
+
 #search-container {
     position: relative;
     top: 50px;
@@ -315,11 +334,9 @@ header button{
 }
 #layers-dropdown {
   display: none;
-    position: absolute;
-    margin-right: 378px;
-    margin-top: 60px;
-
-    
+  position: absolute;
+  margin-right: 378px;
+  margin-top: 60px;
 }
 #layers-dropdown button {
   background-color: #000000b7;
@@ -334,6 +351,7 @@ header button{
   border-radius: 5px;
   cursor: pointer;
   font-size: 10px;
+  margin-bottom: 2px;
 }
 #geographical-layer{
  position: absolute; 
@@ -346,6 +364,11 @@ header button{
 #political-layer{
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   padding-left: 50px;
+}
+#satellite-layer {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  padding-left: 50px;
+  margin-top: 52px;
 }
 
 .dist-input{
@@ -461,4 +484,75 @@ footer {
   align-items: right;
   float: right;
   margin-left: 10px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 2% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-shrink: 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.close-modal {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0 5px;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-body {
+  flex: 1;
+  overflow: hidden;
+}
+
+.modal-body iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.modal.show {
+  display: block;
 }

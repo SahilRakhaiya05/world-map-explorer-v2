@@ -26,3 +26,14 @@ export let tileLayerGeographical = L.tileLayer(
     tabindex: 0,
   }
 );
+
+export let tileLayerSatellite = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  {
+    maxZoom: 19,
+    attribution:
+      'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+    noWrap: true,
+    tabindex: 0,
+  }
+);

@@ -4,7 +4,7 @@
  * See the LICENSE file in the root directory for more information.
  */
 
-import { tileLayerGeographical, tileLayerPolitical } from '../components/tile-layer.js';
+import { tileLayerGeographical, tileLayerPolitical, tileLayerSatellite } from '../components/tile-layer.js';
 import { cancelShowPlaceDetails, geoLayer } from '../services/fetch-place.js';
 import { onSubmitonMainSearchBar } from '../components/Search/search.js';
 import { detailsCloseButton } from '../utils/dom-elements.js';
@@ -20,6 +20,7 @@ let layersDropdown = document.getElementById('layers-dropdown'); //gets the laye
 
 let geographicalLayerBtn = document.getElementById("geographical-layer"); //gets the geographical layer button element
 let politicalLayerBtn = document.getElementById("political-layer"); //gets the political layer button element
+let satelliteLayerBtn = document.getElementById("satellite-layer"); //gets the satellite layer button element
 
 let locationArrow = document
   .getElementById('controls-box')
@@ -77,16 +78,26 @@ detailsCloseButton.addEventListener('click', function () {
   geographicalLayerBtn.addEventListener("click", function () {
     // Add your logic to switch to the geographical layer
     layersDropdown.style.display = "none"; // Hide dropdown
-    tileLayerPolitical.remove();
-    tileLayerGeographical.addTo(map);
+    map.removeLayer(tileLayerPolitical);
+    map.removeLayer(tileLayerSatellite);
+    map.addLayer(tileLayerGeographical);
     notifySreenReader("Switched to geograhical map");
   });
   // Event listener for political layer
   politicalLayerBtn.addEventListener("click", function () {
     // Add your logic to switch to the political layer
     layersDropdown.style.display = "none"; // Hide dropdown
-    tileLayerGeographical.remove();
-    tileLayerPolitical.addTo(map);
+    map.removeLayer(tileLayerGeographical);
+    map.removeLayer(tileLayerSatellite);
+    map.addLayer(tileLayerPolitical);
     notifySreenReader("Switched to political map");
+  });
+
+  satelliteLayerBtn.addEventListener("click", function () {
+    map.removeLayer(tileLayerGeographical);
+    map.removeLayer(tileLayerPolitical);
+    map.addLayer(tileLayerSatellite);
+    layersDropdown.style.display = "none";
+    notifySreenReader("Switched to satellite map");
   });
 }

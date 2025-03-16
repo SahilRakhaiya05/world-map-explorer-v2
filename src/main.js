@@ -12,6 +12,41 @@ import { detailsCloseButton, distanceBox, distanceIcon, input } from "./utils/do
 import { lockTabKey } from "./utils/keydown-helpers.js";
 import { closeSound, successSound } from "./utils/sounds.js";
 let marker;
+
+// Help modal functionality
+const helpModal = document.getElementById('help-modal');
+const helpBtn = document.getElementById('help-btn');
+const closeModalBtn = document.querySelector('.close-modal');
+
+helpBtn.addEventListener('click', () => {
+  helpModal.style.display = 'block';
+  helpModal.classList.add('show');
+  successSound.play();
+  document.addEventListener('keydown', handleModalKeydown);
+});
+
+closeModalBtn.addEventListener('click', closeHelpModal);
+
+function closeHelpModal() {
+  helpModal.style.display = 'none';
+  helpModal.classList.remove('show');
+  closeSound.play();
+  document.removeEventListener('keydown', handleModalKeydown);
+}
+
+function handleModalKeydown(event) {
+  if (event.key === 'Escape') {
+    closeHelpModal();
+  }
+}
+
+// Close modal if clicked outside
+helpModal.addEventListener('click', (event) => {
+  if (event.target === helpModal) {
+    closeHelpModal();
+  }
+});
+
 addDisclaimer() // Add a disclaimer to the UI
 
 fetch('https://ipinfo.io/json') //fetching the location of the user and setting the map to that location, if failed then setting it to the default location
