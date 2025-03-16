@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" href="/public/styles.css" />
   <link href='https://fonts.googleapis.com/css?family=Kumbh Sans' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
@@ -33,10 +35,10 @@
     </div>
     <div class="header-icons">
       <button title="Help" id="help-btn" tabindex="0"
-        aria-label="select for read user manual" onclick="window.open('/src/pages/user-guide/index.html', '_blank');"
+        aria-label="select for read user manual"
         style="cursor: pointer;">
-    Help <i class="fa fa-question-circle" aria-hidden="true"></i>
-</button>
+        Help <i class="fa fa-question-circle" aria-hidden="true"></i>
+      </button>
     </div>
   </div>
 </header>
@@ -124,6 +126,18 @@
   </div>
 
   <div tabindex="0" aria-label="focused on map. use arrow keys to navigate" id="map"></div>
+
+  <div id="help-modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="help-modal-title" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="help-modal-title">World-Map-Explorer – User Manual</h2>
+        <button class="close-modal" aria-label="Close help manual">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe id="help-content" src="/src/pages/user-guide/index.html" title="User Manual" loading="lazy" sandbox="allow-same-origin allow-scripts"></iframe>
+      </div>
+    </div>
+  </div>
 
 </body>
 <footer>
